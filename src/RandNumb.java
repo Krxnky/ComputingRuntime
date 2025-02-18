@@ -7,7 +7,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class RandNumb {
-    private static String filePath = "RandNumb.txt";
+    private static final String filePath = "RandNumb.txt";
 
     public static void generate() {
         try {
@@ -33,7 +33,6 @@ public class RandNumb {
         try {
             Scanner sc = new Scanner(new File(filePath));
             while(sc.hasNextInt()) {
-                System.out.println(sc.nextInt());
                 result.add(sc.nextInt());
             }
         } catch (FileNotFoundException err) {
