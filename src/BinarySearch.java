@@ -1,7 +1,5 @@
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.lang.management.ManagementFactory;
-import java.lang.management.ThreadMXBean;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -17,11 +15,11 @@ public class BinarySearch {
         } catch (FileNotFoundException err) {
             System.out.println("FileNotFoundException: " + err.getMessage());
         }
-        ThreadMXBean threadMXBean = ManagementFactory.getThreadMXBean();
-        long start = threadMXBean.getCurrentThreadCpuTime();
+
+        long start = System.nanoTime();
         // Write Binary Search Logic Below
         int result = binarySearch(numbers, n, 0, numbers.size() - 1);
-        long end = threadMXBean.getCurrentThreadCpuTime();
+        long end = System.nanoTime();
         System.out.println("Binary Search: Took " + (end - start) / 1000000.0 + " ms to find " + n + " at index " + result);
         // Print completed time below
     }

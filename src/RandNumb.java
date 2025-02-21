@@ -2,27 +2,31 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 public class RandNumb {
     private static final String filePath = "RandNumb.txt";
 
     public static void generate() {
-        try {
-            Random random = new Random();
-            FileWriter fw = new FileWriter(filePath);
+        int size = 1000;
+        int[] nums = new int[size];
 
-            for(int i=0; i<1000; i++) {
-                try {
-                    fw.write(random.nextInt(1000) + "\n");
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
+        for(int i = 0; i < size; i++) {
+            nums[i] = i;
+        }
+
+        Random random = new Random();
+        for (int i = nums.length - 1; i > 0; i--) {
+            int j = random.nextInt(i + 1);
+            int temp = nums[i];
+            nums[i] = nums[j];
+            nums[j] = temp;
+        }
+
+        try(FileWriter fw = new FileWriter(filePath)) {
+            for(int x : nums) {
+                fw.write(x + "\n");
             }
-
-            fw.close();
         } catch (IOException err) {
             System.out.println("IOException: " + err.getMessage());
         }

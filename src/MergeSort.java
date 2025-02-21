@@ -1,7 +1,5 @@
 import java.io.FileWriter;
 import java.io.IOException;
-import java.lang.management.ManagementFactory;
-import java.lang.management.ThreadMXBean;
 import java.util.ArrayList;
 
 public class MergeSort {
@@ -9,10 +7,9 @@ public class MergeSort {
         ArrayList<Integer> numbers = RandNumb.read();
 
         // Write Merge Sort Logic Below
-        ThreadMXBean threadMXBean = ManagementFactory.getThreadMXBean();
-        long start = threadMXBean.getCurrentThreadCpuTime();
+        long start = System.nanoTime();
         mergeSort(numbers);
-        long end = threadMXBean.getCurrentThreadCpuTime();
+        long end = System.nanoTime();
         // Save to sortednumb.txt
         try {
             FileWriter fw = new FileWriter("sortednumb.txt");

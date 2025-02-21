@@ -1,5 +1,3 @@
-import java.lang.management.ManagementFactory;
-import java.lang.management.ThreadMXBean;
 import java.util.ArrayList;
 
 public class LinearSearch {
@@ -7,10 +5,9 @@ public class LinearSearch {
         ArrayList<Integer> numbers = RandNumb.read();
 
         // Write Linear Search Logic Below
-        ThreadMXBean threadMXBean = ManagementFactory.getThreadMXBean();
-        long start = threadMXBean.getCurrentThreadCpuTime();
+        long start = System.nanoTime();
         int result = linearSearch(numbers, n);
-        long end = threadMXBean.getCurrentThreadCpuTime();
+        long end = System.nanoTime();
         // Print completed time below
         System.out.println("Linear Search: Took " + (end - start) / 1000000.0 + " ms to find " + n + " at index " + result);
     }

@@ -1,7 +1,5 @@
 import java.io.FileWriter;
 import java.io.IOException;
-import java.lang.management.ManagementFactory;
-import java.lang.management.ThreadMXBean;
 import java.util.ArrayList;
 
 public class QuickSort {
@@ -9,10 +7,9 @@ public class QuickSort {
         ArrayList<Integer> numbers = RandNumb.read();
 
         // Write Quick Sort Logic Below
-        ThreadMXBean threadMXBean = ManagementFactory.getThreadMXBean();
-        long start = threadMXBean.getCurrentThreadCpuTime();
+        long start = System.nanoTime();
         quickSort(numbers, 0, numbers.size() - 1);
-        long end = threadMXBean.getCurrentThreadCpuTime();
+        long end = System.nanoTime();
         // Save to sortednumb.txt
         try {
             FileWriter fw = new FileWriter("sortednumb.txt");
